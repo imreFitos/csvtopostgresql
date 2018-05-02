@@ -1,0 +1,10 @@
+
+Ruby script to convert a CSV textfile with headers into Postgresql table. 
+
+csvtopostgresql drops the existing table, creates a table based on the headers and populates the table with the contents.
+
+usage: script path/to/file name-of-table
+
+The script depends on the DATABASE_URL environmental variable to find the right database.
+
+imre Fitos
