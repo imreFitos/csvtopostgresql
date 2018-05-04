@@ -33,10 +33,11 @@ count = 0
 begin
   conn = PG.connect(:host => host, :user => user, :password => password, :dbname => dbname)
   conn.exec "set client_min_messages = warning"
+  conn.set_client_encoding('unicode')
   conn.exec "DROP TABLE IF EXISTS #{ARGV[1]}"
 
-  File.open(ARGV[0], 'r') do |file|
-    csv = CSV.new(file, headers: false)
+  File.open(ARGV[0], 'r:UTF-8') do |file|
+    csv = CSV.new(file, headers: false, encoding: "UTF-8")
     headers = csv.shift
 
     createtable = "CREATE TABLE #{ARGV[1]} ("
