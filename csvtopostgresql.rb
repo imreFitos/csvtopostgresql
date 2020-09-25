@@ -43,7 +43,7 @@ begin
     createtable = "CREATE TABLE #{ARGV[1]} ("
     headers.each { |h|
       h.gsub!(/[\/: \\?]/, '_')
-      createtable << "#{h} TEXT, "
+      createtable << "\"#{h}\" TEXT, "
     }
     createtable.chomp!(", ")
     createtable << ");"
