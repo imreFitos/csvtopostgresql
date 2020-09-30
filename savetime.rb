@@ -8,8 +8,6 @@ require 'pg'
 
 args = ARGV.join(' ')
 
-puts "#{$0} #{args} started."
-
 unless ENV["DATABASE_URL"]
   puts "#{$0} missing DATABASE_URL environment variable, aborted."; exit 1
 end
@@ -39,3 +37,4 @@ rescue PG::Error => e
 ensure
   conn.close if conn
 end
+puts "#{ARGV[0]} updated with #{ARGV[1]}"
